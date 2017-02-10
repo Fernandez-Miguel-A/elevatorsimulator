@@ -22,7 +22,7 @@ Coupled
             {
             Name = Ascensor1
             Ports = 1 ; 1
-            Path = proyecto/ascensor2.h
+            Path = sourcecode/ascensor2.h
             Description = Atomic DEVS model
             Graphic
                 {
@@ -40,7 +40,7 @@ Coupled
             {
             Name = Controlador
             Ports = 3 ; 3
-            Path = proyecto/controlador2.h
+            Path = sourcecode/controlador2.h
             Description = Atomic DEVS model
             Graphic
                 {
@@ -58,7 +58,7 @@ Coupled
             {
             Name = Ascensor2
             Ports = 1 ; 1
-            Path = proyecto/ascensor2.h
+            Path = sourcecode/ascensor2.h
             Description = Atomic DEVS model
             Graphic
                 {
@@ -76,7 +76,7 @@ Coupled
             {
             Name = Botonera
             Ports = 2 ; 1
-            Path = proyecto/botonera1.h
+            Path = sourcecode/botonera1.h
             Description = Atomic DEVS model
             Graphic
                 {
@@ -94,7 +94,7 @@ Coupled
             {
             Name = Generador
             Ports = 0 ; 1
-            Path = proyecto/expgen.h
+            Path = sourcecode/expgen.h
             Description = Atomic DEVS model
             Graphic
                 {

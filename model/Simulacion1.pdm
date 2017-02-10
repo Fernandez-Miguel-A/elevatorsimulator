@@ -22,7 +22,7 @@ Coupled
             {
             Name = Controlador
             Ports = 2 ; 2
-            Path = proyecto/controlador1.h
+            Path = sourcecode/controlador1.h
             Description = Atomic DEVS model
             Graphic
                 {
@@ -58,7 +58,7 @@ Coupled
             {
             Name = Botonera
             Ports = 2 ; 1
-            Path = proyecto/botonera1.h
+            Path = sourcecode/botonera1.h
             Description = Atomic DEVS model
             Graphic
                 {
@@ -76,7 +76,7 @@ Coupled
             {
             Name = Atomic0
             Ports = 0 ; 1
-            Path = proyecto/expgen.h
+            Path = sourcecode/expgen.h
             Description = Atomic DEVS model
             Graphic
                 {
@@ -238,7 +238,7 @@ Coupled
             {
             Source = Cmp ;  3 ;  1 ; -1
             Sink = Cmp ;  4 ;  1 ; 0
-            PointX = -27690 ; -28275 ; -28275
+            PointX = -27690 ; -27690 ; -28275
             PointY = -8100 ; -8100 ; -8100
             }
         }

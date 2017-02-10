@@ -2,7 +2,7 @@ Root-Coordinator
  {
   Simulator
    {
-    Path = proyecto/controlador1.h
+    Path = sourcecode/controlador1.h
     Parameters = 
    }
   Simulator
@@ -12,12 +12,12 @@ Root-Coordinator
    }
   Simulator
    {
-    Path = proyecto/botonera1.h
+    Path = sourcecode/botonera1.h
     Parameters = 
    }
   Simulator
    {
-    Path = proyecto/expgen.h
+    Path = sourcecode/expgen.h
     Parameters = 
    }
   Simulator
