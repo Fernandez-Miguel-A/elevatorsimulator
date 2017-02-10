@@ -7,12 +7,12 @@ Root-Coordinator
    }
   Simulator
    {
-    Path = sourcecode/controlador2.h
+    Path = sourcecode/ascensor2.h
     Parameters = 
    }
   Simulator
    {
-    Path = sourcecode/ascensor2.h
+    Path = sourcecode/controlador2.h
     Parameters = 
    }
   Simulator
@@ -48,15 +48,15 @@ Root-Coordinator
    }
   IC
    {
-    (1,0);(0,0)
-    (0,0);(1,1)
-    (1,1);(2,0)
-    (2,0);(1,2)
-    (3,0);(1,0)
-    (1,2);(3,1)
+    (2,0);(0,0)
+    (0,0);(2,1)
+    (2,1);(1,0)
+    (1,0);(2,2)
+    (3,0);(2,0)
+    (2,2);(3,1)
     (4,0);(3,0)
     (4,0);(5,0)
     (0,0);(6,0)
-    (2,0);(7,0)
+    (1,0);(7,0)
    }
  }

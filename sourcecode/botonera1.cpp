@@ -114,7 +114,7 @@ if ((estado.compare("Libre")==0) && (pet.size() != 0)){
 }
 ;
 std::stringstream v1;
-	v1 << salida ;
+	v1 << pet.size() ;
 	char const *pchar = v1.str().c_str();
 printLog(" \n");
 	printLog(pchar);

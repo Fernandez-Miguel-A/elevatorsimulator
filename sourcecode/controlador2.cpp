@@ -10,6 +10,11 @@ bool controlador2::disponibilidad(){
 	return (e1.compare("Libre") == 0 || e2.compare("Libre") == 0);
 }
 double controlador2::optimo(double t){
+    if (counter_aux%2==0){
+        return 1;
+    }else{
+        return 2;
+    }
     return 2;
     if (e1.compare("Libre") == 0){
 		return 1;
@@ -43,6 +48,7 @@ tiempo2 = INF;
 demora2 = 0;
 ult_dest2 = 0;
 
+counter_aux = 0;
 puerto_salida = 0;
 }
 double controlador2::ta(double t) {
@@ -115,7 +121,7 @@ printLog("IF4");
 			}else{
 				if((puerto_salida == 1) && (e2.compare("Ocupado") == 0) && (tiempo1 > tiempo2) &&
 				 (piso2 ==destino2) && (cola2.size() !=0)){
-                    const long &result = cola1.front();
+                    const long &result = cola2.front();
                     destino2 = result;
         
 		            e2 = "Ocupado";
@@ -166,6 +172,7 @@ printLog("CONTROLADOR delta ext \n");
 double *aux;
 aux = (double*) x.value;
 if((e1.compare("Libre") == 0) && (x.port == 0) && (optimo(*aux) == 1)){
+    counter_aux++;
 	destino1 = *aux;
 	demora1=demora1-e+*aux;
     ult_dest1 = *aux;
@@ -175,6 +182,7 @@ if((e1.compare("Libre") == 0) && (x.port == 0) && (optimo(*aux) == 1)){
 	puerto_salida = 0;
 }else{
 	if((e1.compare("Ocupado") == 0) && (x.port == 0) && (optimo(*aux) == 1)){
+        counter_aux++;
 		tiempo1 = tiempo1 -e;
         ult_dest1 = *aux;
 		cola1.push(*aux);
@@ -183,6 +191,7 @@ if((e1.compare("Libre") == 0) && (x.port == 0) && (optimo(*aux) == 1)){
 		tiempo2 = tiempo2-e;
 	}else{
 		if((e2.compare("Libre") == 0) && (x.port == 0) && (optimo(*aux) == 2)){
+            counter_aux++;
 			tiempo1 = tiempo1 -e;
 			destino2 = *aux ;
             ult_dest2 = *aux;			
@@ -192,6 +201,7 @@ if((e1.compare("Libre") == 0) && (x.port == 0) && (optimo(*aux) == 1)){
 			puerto_salida = 1;
 		}else{
 			if((e2.compare("Ocupado") == 0) && (x.port == 0) && (optimo(*aux) ==2)){
+                counter_aux++;
 				tiempo1 = tiempo1-e;
 				tiempo2 = tiempo2-e;
                 ult_dest2 = *aux;			

@@ -38,14 +38,14 @@ Coupled
             }
         Atomic
             {
-            Name = Controlador
-            Ports = 3 ; 3
-            Path = sourcecode/controlador2.h
+            Name = Ascensor2
+            Ports = 1 ; 1
+            Path = sourcecode/ascensor2.h
             Description = Atomic DEVS model
             Graphic
                 {
-                Position = -2700 ; -2550
-                Dimension = 900 ; 1050
+                Position = 45 ; -885
+                Dimension = 675 ; 720
                 Direction = Right
                 Color = 15
                 Icon = None
@@ -56,14 +56,14 @@ Coupled
             }
         Atomic
             {
-            Name = Ascensor2
-            Ports = 1 ; 1
-            Path = sourcecode/ascensor2.h
+            Name = Controlador
+            Ports = 3 ; 3
+            Path = sourcecode/controlador2.h
             Description = Atomic DEVS model
             Graphic
                 {
-                Position = 45 ; -885
-                Dimension = 675 ; 720
+                Position = -2700 ; -2550
+                Dimension = 900 ; 1050
                 Direction = Right
                 Color = 15
                 Icon = None
@@ -185,7 +185,7 @@ Coupled
             }
         Line
             {
-            Source = Cmp ;  2 ;  1 ; 0
+            Source = Cmp ;  3 ;  1 ; 0
             Sink = Cmp ;  1 ;  1 ; -1
             PointX = -1650 ; -1050 ; -1050 ; -165
             PointY = -2325 ; -2325 ; -3300 ; -3300
@@ -193,34 +193,34 @@ Coupled
         Line
             {
             Source = Cmp ;  1 ;  1 ; 0
-            Sink = Cmp ;  2 ;  2 ; -1
+            Sink = Cmp ;  3 ;  2 ; -1
             PointX = 750 ; 1425 ; 1425 ; -3450 ; -3450 ; -2865
             PointY = -3300 ; -3300 ; 900 ; 900 ; -2025 ; -2025
             }
         Line
             {
-            Source = Cmp ;  2 ;  2 ; 0
-            Sink = Cmp ;  3 ;  1 ; -1
+            Source = Cmp ;  3 ;  2 ; 0
+            Sink = Cmp ;  2 ;  1 ; -1
             PointX = -1650 ; -1050 ; -1050 ; -90
             PointY = -2025 ; -2025 ; -525 ; -525
             }
         Line
             {
-            Source = Cmp ;  3 ;  1 ; 0
-            Sink = Cmp ;  2 ;  3 ; -1
+            Source = Cmp ;  2 ;  1 ; 0
+            Sink = Cmp ;  3 ;  3 ; -1
             PointX = 825 ; 1050 ; 1050 ; -3075 ; -3075 ; -2865
             PointY = -525 ; -525 ; 450 ; 450 ; -1725 ; -1725
             }
         Line
             {
             Source = Cmp ;  4 ;  1 ; 0
-            Sink = Cmp ;  2 ;  1 ; -1
+            Sink = Cmp ;  3 ;  1 ; -1
             PointX = -4425 ; -4425 ; -2865
             PointY = -2325 ; -2325 ; -2325
             }
         Line
             {
-            Source = Cmp ;  2 ;  3 ; 0
+            Source = Cmp ;  3 ;  3 ; 0
             Sink = Cmp ;  4 ;  2 ; -1
             PointX = -1650 ; -1425 ; -1425 ; -5475 ; -5475 ; -5340
             PointY = -1725 ; -1725 ; -825 ; -825 ; -2175 ; -2175
@@ -248,7 +248,7 @@ Coupled
             }
         Line
             {
-            Source = Cmp ;  3 ;  1 ; 0
+            Source = Cmp ;  2 ;  1 ; 0
             Sink = Cmp ;  8 ;  1 ; -1
             PointX = 825 ; 825 ; 1710
             PointY = -525 ; -525 ; -525
