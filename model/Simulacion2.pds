@@ -12,7 +12,7 @@ Root-Coordinator
    }
   Simulator
    {
-    Path = sourcecode/controlador2.h
+    Path = sourcecode/c22.h
     Parameters = 
    }
   Simulator
@@ -40,6 +40,11 @@ Root-Coordinator
     Path = sinks/gnuplot.h
     Parameters = 1.000000e+00,"set xrange [0:%tf] @ set grid @ set title 'Plot'","with lines title 'First output'","","","",""
    }
+  Simulator
+   {
+    Path = sinks/to_disk.h
+    Parameters = "output.csv"
+   }
   EIC
    {
    }
@@ -58,5 +63,6 @@ Root-Coordinator
     (4,0);(5,0)
     (0,0);(6,0)
     (1,0);(7,0)
+    (4,0);(8,0)
    }
  }

@@ -7,7 +7,7 @@ Root-Coordinator
    }
   Simulator
    {
-    Path = proyecto/ascensor2.h
+    Path = sourcecode/ascensor2.h
     Parameters = 
    }
   Simulator

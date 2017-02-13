@@ -40,7 +40,7 @@ Coupled
             {
             Name = Ascensor
             Ports = 1 ; 1
-            Path = proyecto/ascensor2.h
+            Path = sourcecode/ascensor2.h
             Description = Atomic DEVS model
             Graphic
                 {
