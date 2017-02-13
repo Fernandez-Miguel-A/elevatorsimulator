@@ -34,6 +34,8 @@ double tiempo2;
 double demora2;
 double ult_dest2;
 
+int counter_aux;
+
 std::queue<double> cola2;
 
 double puerto_salida;
@@ -53,6 +55,6 @@ public:
 private:
 	double minimo(double, double);
 	bool disponibilidad();
-	double optimo(double);
+	double optimo(double,double);
 };
 #endif
