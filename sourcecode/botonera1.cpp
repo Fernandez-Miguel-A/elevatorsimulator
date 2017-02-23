@@ -58,8 +58,18 @@ if ((x.port == 0) && (estado.compare("Libre")==0)){
 	printLog(" \n Queue size before of insert of an element: ");
 	printLog(pchar);
 	printLog(" \n");
-	pet.push(*aux);
-	tiempo = 0.0;
+    if (pet.size()<=0){
+        pet.push(*aux);
+	    tiempo = 0.0;
+    }else{
+        const long &result = pet.back();
+        if (result!=*aux){
+          pet.push(*aux);
+	      tiempo = 0.0;  
+	    }else{
+            tiempo = INF;
+        }
+    }
 	std::stringstream v2;
 	v2 << pet.size() ;
 	char const *pchar1 = v2.str().c_str();
@@ -84,8 +94,13 @@ if ((x.port == 0) && (estado.compare("Libre")==0)){
 		printLog(" \n");
 	}else{
 		if ((x.port == 1) && (aux2->compare("Libre")==0)){
-			estado = *aux2;
-			tiempo = 0.0;
+            estado = *aux2;            
+            if (pet.size()>0){
+				tiempo = 0.0;
+            }else{
+                printLog("Infinito");
+                tiempo = INF;
+            }
 		}else{
 			if ((x.port == 1) && (aux2->compare("Ocupado")==0)){
 				estado = *aux2;

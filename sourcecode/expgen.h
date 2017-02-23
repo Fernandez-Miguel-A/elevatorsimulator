@@ -1,4 +1,4 @@
-//CPP:proyecto/expgen.cpp
+//CPP:sourcecode/expgen.cpp
 #if !defined expgen_h
 #define expgen_h
 
