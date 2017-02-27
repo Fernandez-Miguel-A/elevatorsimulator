@@ -1,19 +1,19 @@
-//CPP:proyecto/c2.cpp
-#if !defined c2_h
-#define c2_h
+//CPP:proyecto/c22.cpp
+#if !defined c22_h
+#define c22_h
 
 #include "simulator.h"
 #include "event.h"
 #include "stdarg.h"
 
-#include "queue"
+#include "deque"
 #include "sstream"
 #include "string"
 #include "math.h"
 #include "stdlib.h"
 
 
-class c2: public Simulator { 
+class c22: public Simulator { 
 // Declare the state,
 // output variables
 // and parameters
@@ -24,7 +24,7 @@ std::string e1;
 double tiempo1;
 double demora1;
 double ult_dest1;
-std::queue<double> cola1;
+std::deque<double> cola1;
 
 //Estado ascensor 2
 double piso2;
@@ -36,7 +36,7 @@ double ult_dest2;
 
 int counter_aux;
 
-std::queue<double> cola2;
+std::deque<double> cola2;
 
 double puerto_salida;
 
@@ -45,7 +45,7 @@ std::string salida;
 #define INF 1e20;
 
 public:
-	c2(const char *n): Simulator(n) {};
+	c22(const char *n): Simulator(n) {};
 	void init(double, ...);
 	double ta(double t);
 	void dint(double);
@@ -55,6 +55,7 @@ public:
 private:
 	double minimo(double, double);
 	bool disponibilidad();
-	double optimo(double);
+	double optimo(std::string,std::string);
+    bool find(std::deque<double>,double);
 };
 #endif

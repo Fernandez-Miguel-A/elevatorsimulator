@@ -6,7 +6,7 @@
 #include "event.h"
 #include "stdarg.h"
 
-#include "queue"
+#include "deque"
 #include "sstream"
 #include "string"
 #include "math.h"
@@ -24,7 +24,7 @@ std::string e1;
 double tiempo1;
 double demora1;
 double ult_dest1;
-std::queue<double> cola1;
+std::deque<double> cola1;
 
 //Estado ascensor 2
 double piso2;
@@ -36,7 +36,7 @@ double ult_dest2;
 
 int counter_aux;
 
-std::queue<double> cola2;
+std::deque<double> cola2;
 
 double puerto_salida;
 
@@ -56,5 +56,6 @@ private:
 	double minimo(double, double);
 	bool disponibilidad();
 	double optimo(int);
+    bool find(std::deque<double>,double);
 };
 #endif

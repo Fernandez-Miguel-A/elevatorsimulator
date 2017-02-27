@@ -28,22 +28,32 @@ Root-Coordinator
   Simulator
    {
     Path = sinks/gnuplot.h
-    Parameters = 1.000000e+00,"set xrange [0:%tf] @ set grid @ set title 'Plot'","with lines title 'First output'","","","",""
+    Parameters = 1.000000e+00,"set xrange [0:%tf] @ set grid @ set title 'Generador'","with lines title 'First output'","","","",""
    }
   Simulator
    {
     Path = sinks/gnuplot.h
-    Parameters = 1.000000e+00,"set xrange [0:%tf] @ set grid @ set title 'Plot'","with lines title 'First output'","","","",""
+    Parameters = 1.000000e+00,"set xrange [0:%tf] @ set grid @ set title 'Ascensor1'","with lines title 'First output'","","","",""
    }
   Simulator
    {
     Path = sinks/gnuplot.h
-    Parameters = 1.000000e+00,"set xrange [0:%tf] @ set grid @ set title 'Plot'","with lines title 'First output'","","","",""
+    Parameters = 1.000000e+00,"set xrange [0:%tf] @ set grid @ set title 'Ascensor2'","with lines title 'First output'","","","",""
    }
   Simulator
    {
     Path = sinks/to_disk.h
-    Parameters = "output.csv"
+    Parameters = "salidagenerador.csv"
+   }
+  Simulator
+   {
+    Path = sinks\to_disk.h
+    Parameters = "ascensor1.csv"
+   }
+  Simulator
+   {
+    Path = sinks\to_disk.h
+    Parameters = "ascensor2.csv"
    }
   EIC
    {
@@ -62,7 +72,9 @@ Root-Coordinator
     (4,0);(3,0)
     (4,0);(5,0)
     (0,0);(6,0)
-    (1,0);(7,0)
     (4,0);(8,0)
+    (0,0);(9,0)
+    (1,0);(10,0)
+    (1,0);(7,0)
    }
  }

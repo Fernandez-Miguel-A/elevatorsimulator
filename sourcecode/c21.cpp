@@ -16,6 +16,16 @@ double c21::optimo(int t){
         return 2;
     }
 }
+bool c21::find(std::deque<double> list, double elem){
+    std::deque<double>::iterator it = list.begin();    
+    while (it != list.end()){   
+        if(*it++ == elem){
+         return true;
+        }    
+    }
+    return false;
+}
+
 void c21::init(double t,...) {
 //The 'parameters' variable contains the parameters transferred from the editor.
 va_list parameters;
@@ -85,7 +95,7 @@ if((puerto_salida == 0) && (e1.compare("Ocupado") ==0) && (tiempo1 <= tiempo2) &
         destino1 = result;
         
 		e1 = "Ocupado";
-		cola1.pop();
+		cola1.pop_front();
 		tiempo1 = 0;	
         std::stringstream v1;
 	    v1 << destino1 ;
@@ -115,12 +125,12 @@ printLog("IF4");
                     destino2 = result;
         
 		            e2 = "Ocupado";
-	            	cola2.pop();
+	            	cola2.pop_front();
 	            	tiempo2 = 0;	
                     std::stringstream v1;
                     v1 << destino2 ;
 	                char const *pchar = v1.str().c_str();
-	                printLog(" \n DESTINO 1111111111111 ");
+	                printLog(" \n iff 2211111111111 ");
 	                printLog(pchar);
 	                printLog(" \n");
 		            puerto_salida = 1;	
@@ -159,25 +169,47 @@ void c21::dext(Event x, double t) {
 //     'x.port' is the port number
 //     'e' is the time elapsed since last transition
 printLog("CONTROLADOR delta ext \n");
+printLog("\nCOLA 1 SIZE");
+std::stringstream v1;
+	v1 << cola1.size() ;
+	char const *pchar = v1.str().c_str();
+	printLog(pchar);
+printLog(" \n");
+
+
+printLog("\nCOLA 2 SIZE");
+std::stringstream v2;
+	v2 << cola2.size() ;
+	char const *pchar2 = v2.str().c_str();
+	printLog(pchar2);
+printLog(" \n");
 double *aux;
 aux = (double*) x.value;
 if((e1.compare("Libre") == 0) && (x.port == 0) && (optimo(counter_aux) == 1)){
     counter_aux++;
 	destino1 = *aux;
-	demora1=demora1-e+*aux;
-    ult_dest1 = *aux;
 	e1 = "Ocupado";
 	tiempo1 = 0;
 	tiempo2 = tiempo2 - e;
 	puerto_salida = 0;
+    demora1 = abs(*aux-piso1)*2;
+    if (piso2 != destino2){
+        demora2 = demora2 -e ;
+    }
+    ult_dest1 = *aux;
+
 }else{
 	if((e1.compare("Ocupado") == 0) && (x.port == 0) && (optimo(counter_aux) == 1)){
-        counter_aux++;
-		tiempo1 = tiempo1 -e;
-        ult_dest1 = *aux;
-		cola1.push(*aux);
-        
-		demora1 =  demora1-e+ *aux;
+        tiempo1 = tiempo1 -e;
+        if (!find(cola1,*aux)){
+		    cola1.push_back(*aux);
+            counter_aux++;
+            demora1 =  demora1-e+ (abs(*aux-ult_dest1)*2);
+            ult_dest1 = *aux;
+            if (piso2 != destino2){
+                demora2 = demora2 -e ;
+            }		
+        }
 		tiempo2 = tiempo2-e;
 	}else{
 		if((e2.compare("Libre") == 0) && (x.port == 0) && (optimo(counter_aux) == 2)){
@@ -185,22 +217,36 @@ if((e1.compare("Libre") == 0) && (x.port == 0) && (optimo(counter_aux) == 1)){
 			tiempo1 = tiempo1 -e;
 			destino2 = *aux ;
             ult_dest2 = *aux;			
-            demora2 = demora2-e+*aux;
 			e2 = "Ocupado";
 			tiempo2 = 0;
 			puerto_salida = 1;
+            demora2 = abs(*aux-piso2)*2;
+            if (piso1 != destino1){
+                demora1 = demora1 -e ;
+            } 
 		}else{
 			if((e2.compare("Ocupado") == 0) && (x.port == 0) && (optimo(counter_aux) ==2)){
-                counter_aux++;
-				tiempo1 = tiempo1-e;
+                tiempo1 = tiempo1-e;
 				tiempo2 = tiempo2-e;
-                ult_dest2 = *aux;			
-            	cola2.push(*aux);
-				demora2 = demora2-e+ *aux;
+                printLog("ifffffff1");
+                if (!find(cola2,*aux)){            	
+                    cola2.push_back(*aux);
+                    counter_aux++;
+					demora2 = demora2-e+ (abs(*aux-ult_dest2)*2);
+                    ult_dest2 = *aux;	
+                    if (piso1 != destino1){
+                        demora1 = demora1 -e ;
+                    } 
+                }
 			}else{
 				if((e1.compare("Ocupado") == 0) && (x.port == 1) && (*aux == destino1)){
 					piso1=*aux;
-					demora1 = demora1-e;
+                    if (demora1!=0){
+                        demora1 = demora1-e;
+                    }
+					if (demora2!=0){
+                        demora2 = demora2-e;
+                    }
 					tiempo1 = 0;
 					tiempo2 = tiempo2 -e;
 					puerto_salida = 0;
@@ -208,7 +254,13 @@ if((e1.compare("Libre") == 0) && (x.port == 0) && (optimo(counter_aux) == 1)){
 				}else{
 					if((e1.compare("Ocupado") == 0) && (x.port == 1) && (*aux != destino1)){
 						piso1 = *aux;
-						demora1 = demora1-e;
+                        if (demora1!=0){
+                            demora1 = demora1-e;
+                        }
+						if (demora2!=0){
+                            demora2 = demora2-e;
+                        }
+                        
 						tiempo1 = INF;
 						tiempo2 = tiempo2-e;
 						puerto_salida = 1;
@@ -216,14 +268,25 @@ if((e1.compare("Libre") == 0) && (x.port == 0) && (optimo(counter_aux) == 1)){
 					}else{
 						if((e2.compare("Ocupado") == 0) && (x.port == 2) && (*aux == destino2)){
 							piso2 = *aux;
-							demora2 = demora2-e;
+							if (demora1!=0){
+                                demora1 = demora1-e;
+                            }
+						    if (demora2!=0){
+                                demora2 = demora2-e;
+                            }
 							tiempo2 = 0;
 							tiempo1 = tiempo1 -e;
 							puerto_salida = 1;
+                            
 						}else{
 							if((e2.compare("Ocupado") == 0) && (x.port == 2) && (*aux != destino2)){
 								piso2 = *aux;
-								demora2 = demora2-e;
+								if (demora1!=0){
+                                    demora1 = demora1-e;
+                                }
+						        if (demora2!=0){
+                                    demora2 = demora2-e;
+                                }
 								tiempo2 = INF;
 								tiempo1 = tiempo1 -e;
 								puerto_salida = 0;

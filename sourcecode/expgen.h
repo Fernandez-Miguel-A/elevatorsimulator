@@ -12,7 +12,7 @@
 #include "stdlib.h"
 #include "randomc.h"
 #include "stocc.h"
-#include "/home/powerdevs/powerdevs/engine/pdevslib.h"
+#include "/home/leo/powerdevs/engine/pdevslib.h"
 
 
 class expgen: public Simulator { 

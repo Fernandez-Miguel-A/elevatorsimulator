@@ -110,13 +110,13 @@ Coupled
             }
         Atomic
             {
-            Name = GnuPlot0
+            Name = GeneradorPlot
             Ports = 1 ; 0
             Path = sinks/gnuplot.h
             Description = Plot input signal using GnuPlot
             Graphic
                 {
-                Position = -6180 ; 990
+                Position = -6180 ; -585
                 Dimension = 675 ; 720
                 Direction = Right
                 Color = 15
@@ -125,7 +125,7 @@ Coupled
             Parameters
                 {
                 Inputs = Str; %Inputs ; Number of inputs
-                Format = Str; set xrange [0:%tf] @ set grid @ set title 'Plot' ; General Formatting (use @ as line break)
+                Format = Str; set xrange [0:%tf] @ set grid @ set title 'Generador' ; General Formatting (use @ as line break)
                 Format1 = Str; with lines title 'First output' ; Formatting options for input 1
                 Format2 = Str;  ; Formatting options for input 2
                 Format3 = Str;  ; Formatting options for input 3
@@ -135,13 +135,13 @@ Coupled
             }
         Atomic
             {
-            Name = GnuPlot1
+            Name = Ascensor1Plot
             Ports = 1 ; 0
             Path = sinks/gnuplot.h
             Description = Plot input signal using GnuPlot
             Graphic
                 {
-                Position = 1770 ; -3660
+                Position = 2220 ; -3660
                 Dimension = 675 ; 720
                 Direction = Right
                 Color = 15
@@ -150,7 +150,7 @@ Coupled
             Parameters
                 {
                 Inputs = Str; %Inputs ; Number of inputs
-                Format = Str; set xrange [0:%tf] @ set grid @ set title 'Plot' ; General Formatting (use @ as line break)
+                Format = Str; set xrange [0:%tf] @ set grid @ set title 'Ascensor1' ; General Formatting (use @ as line break)
                 Format1 = Str; with lines title 'First output' ; Formatting options for input 1
                 Format2 = Str;  ; Formatting options for input 2
                 Format3 = Str;  ; Formatting options for input 3
@@ -160,13 +160,13 @@ Coupled
             }
         Atomic
             {
-            Name = GnuPlot2
+            Name = Ascensor2Plot
             Ports = 1 ; 0
             Path = sinks/gnuplot.h
             Description = Plot input signal using GnuPlot
             Graphic
                 {
-                Position = 1845 ; -885
+                Position = 2295 ; -885
                 Dimension = 675 ; 720
                 Direction = Right
                 Color = 15
@@ -175,7 +175,7 @@ Coupled
             Parameters
                 {
                 Inputs = Str; %Inputs ; Number of inputs
-                Format = Str; set xrange [0:%tf] @ set grid @ set title 'Plot' ; General Formatting (use @ as line break)
+                Format = Str; set xrange [0:%tf] @ set grid @ set title 'Ascensor2' ; General Formatting (use @ as line break)
                 Format1 = Str; with lines title 'First output' ; Formatting options for input 1
                 Format2 = Str;  ; Formatting options for input 2
                 Format3 = Str;  ; Formatting options for input 3
@@ -185,13 +185,13 @@ Coupled
             }
         Atomic
             {
-            Name = To Disk0
+            Name = SalidaGenerador
             Ports = 1 ; 0
             Path = sinks/to_disk.h
             Description = Save the values (event,t) in a file.
             Graphic
                 {
-                Position = -6180 ; -105
+                Position = -6180 ; 495
                 Dimension = 675 ; 675
                 Direction = Right
                 Color = 15
@@ -199,8 +199,52 @@ Coupled
                 }
             Parameters
                 {
-                File = Str; output.csv ; file name
+                File = Str; salidagenerador.csv ; file name
                 }
+            }
+        Atomic
+            {
+            Name = SalidaAscensor1
+            Ports = 1 ; 0
+            Path = sinks\to_disk.h
+            Description = Save the values (event,t) in a file.
+            Graphic
+                {
+                Position = 2220 ; -2505
+                Dimension = 675 ; 675
+                Direction = Right
+                Color = 15
+                Icon = %sinks%todisk.svg
+                }
+            Parameters
+                {
+                File = Str; ascensor1.csv ; file name
+                }
+            }
+        Atomic
+            {
+            Name = SalidaAscensor2
+            Ports = 1 ; 0
+            Path = sinks\to_disk.h
+            Description = Save the values (event,t) in a file.
+            Graphic
+                {
+                Position = 2295 ; 195
+                Dimension = 675 ; 675
+                Direction = Right
+                Color = 15
+                Icon = %sinks%todisk.svg
+                }
+            Parameters
+                {
+                File = Str; ascensor2.csv ; file name
+                }
+            }
+        Point
+            {
+            ConectedLines = 10 ; 13 ; 14
+            ConectedExtrems = Org ; Org ; Org
+            Position = 825 ; -525
             }
         Line
             {
@@ -256,20 +300,20 @@ Coupled
             Source = Cmp ;  5 ;  1 ; 0
             Sink = Cmp ;  6 ;  1 ; -1
             PointX = -6375 ; -6315 ; -6315
-            PointY = -2475 ; -2475 ; 1350
+            PointY = -2475 ; -2475 ; -225
             }
         Line
             {
             Source = Cmp ;  1 ;  1 ; 0
             Sink = Cmp ;  7 ;  1 ; -1
-            PointX = 750 ; 750 ; 1635
+            PointX = 750 ; 750 ; 2085
             PointY = -3300 ; -3300 ; -3300
             }
         Line
             {
             Source = Cmp ;  2 ;  1 ; 0
-            Sink = Cmp ;  8 ;  1 ; -1
-            PointX = 825 ; 825 ; 1710
+            Sink = Pnt ;  1 ; -1 ; 0
+            PointX = 825 ; 825 ; 825
             PointY = -525 ; -525 ; -525
             }
         Line
@@ -277,7 +321,28 @@ Coupled
             Source = Cmp ;  5 ;  1 ; 0
             Sink = Cmp ;  9 ;  1 ; -1
             PointX = -6375 ; -6315 ; -6315
-            PointY = -2475 ; -2475 ; 225
+            PointY = -2475 ; -2475 ; 825
+            }
+        Line
+            {
+            Source = Cmp ;  10 ;  1 ; -1
+            Sink = Cmp ;  1 ;  1 ; 0
+            PointX = 2085 ; 750 ; 750
+            PointY = -2175 ; -2175 ; -3300
+            }
+        Line
+            {
+            Source = Cmp ;  11 ;  1 ; -1
+            Sink = Pnt ;  1 ; -1 ; 0
+            PointX = 2160 ; 825 ; 825
+            PointY = 525 ; 525 ; -525
+            }
+        Line
+            {
+            Source = Pnt ;  1 ; -1 ; 0
+            Sink = Cmp ;  8 ;  1 ; -1
+            PointX = 825 ; 825 ; 2160
+            PointY = -525 ; -525 ; -525
             }
         }
     }
