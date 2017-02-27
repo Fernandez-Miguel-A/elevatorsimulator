@@ -23,7 +23,7 @@ Root-Coordinator
   Simulator
    {
     Path = sinks/gnuplot.h
-    Parameters = 1.000000e+00,"set xrange [0:%tf] @ set grid @ set title 'Plot'","with lines title 'First output'","","","",""
+    Parameters = 1.000000e+00,"set xrange [0:%tf] @ set grid @ set title 'Generador'","with lines title 'First output'","","","",""
    }
   Simulator
    {
@@ -38,7 +38,7 @@ Root-Coordinator
   Simulator
    {
     Path = sinks/gnuplot.h
-    Parameters = 1.000000e+00,"set xrange [0:%tf] @ set grid @ set title 'Plot'","with lines title 'First output'","","","",""
+    Parameters = 1.000000e+00,"set xrange [0:%tf] @ set grid @ set title 'Ascensor'","with lines title 'First output'","","","",""
    }
   EIC
    {
