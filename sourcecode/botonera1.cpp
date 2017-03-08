@@ -29,7 +29,7 @@ if ((estado.compare("Libre")==0) ){
 	std::stringstream v2;
 	v2 << pet.size() ;
 	char const *pchar1 = v2.str().c_str();
-	printLog(" \n Queue size after of insert of an element: ");
+	printLog(" \n Queue size after of delete of an element: ");
 	printLog(pchar1);
 	printLog(" \n");
 }else{

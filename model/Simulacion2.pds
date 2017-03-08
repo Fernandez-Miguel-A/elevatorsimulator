@@ -55,6 +55,11 @@ Root-Coordinator
     Path = sinks\to_disk.h
     Parameters = "ascensor2.csv"
    }
+  Simulator
+   {
+    Path = sinks/gnuplot.h
+    Parameters = 1.000000e+00,"set xrange [0:%tf] @ set grid @ set title 'Botonera'","with lines title 'First output'","","","",""
+   }
   EIC
    {
    }
@@ -74,6 +79,7 @@ Root-Coordinator
     (0,0);(6,0)
     (4,0);(8,0)
     (0,0);(9,0)
+    (3,0);(11,0)
     (1,0);(10,0)
     (1,0);(7,0)
    }
