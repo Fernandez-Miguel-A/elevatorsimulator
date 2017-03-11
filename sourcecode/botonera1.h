@@ -11,7 +11,9 @@
 #include "string"
 #include "math.h"
 #include "stdlib.h"
-
+#include <iostream>
+#include <fstream>
+using namespace std;
 
 class botonera1: public Simulator { 
 // Declare the state,
@@ -25,6 +27,8 @@ double tiempo;
 
 // Variables de Salida
 double salida;
+// File
+ofstream myfile;
 
 #define INF 1e20
 public:

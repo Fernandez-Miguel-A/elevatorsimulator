@@ -12,11 +12,17 @@
 #include "math.h"
 #include "stdlib.h"
 
+#include <iostream>
+#include <fstream>
+using namespace std;
 
 class controlador2: public Simulator { 
 // Declare the state,
 // output variables
 // and parameters
+// File
+ofstream myfile;
+
 // Estado ascensor 1
 double piso1;
 double destino1;
