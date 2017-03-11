@@ -113,6 +113,20 @@ ult_dest2 = 0;
 
 counter_aux = 0;
 puerto_salida = 0;
+
+//clear the files
+myfile.open ("c2_cola1_in.csv");
+myfile << "";
+myfile.close();
+myfile.open ("c2_cola1_out.csv");
+myfile << "";
+myfile.close();
+myfile.open ("c2_cola2_in.csv");
+myfile << "";
+myfile.close();
+myfile.open ("c2_cola2_out.csv");
+myfile << "";
+myfile.close();
 }
 double controlador2::ta(double t) {
 //This function returns a double.
@@ -159,6 +173,15 @@ if((puerto_salida == 0) && (e1.compare("Ocupado") ==0) && (tiempo1 <= tiempo2) &
         
 		e1 = "Ocupado";
 		cola1.pop_front();
+
+//manage c21_out.csv
+        std::stringstream e_string;
+        e_string<< t;
+        char const *e_char = e_string.str().c_str();
+        myfile.open ("c2_cola1_out.csv",std::ios::app);
+        myfile << e_char;
+        myfile <<"\n";
+        myfile.close();
 		tiempo1 = 0;	
         std::stringstream v1;
 	    v1 << destino1 ;
@@ -189,6 +212,14 @@ printLog("IF4");
         
 		            e2 = "Ocupado";
 	            	cola2.pop_front();
+                    //manage c2_out.csv
+                    std::stringstream e_string;
+                    e_string<< t;
+                    char const *e_char = e_string.str().c_str();
+                    myfile.open ("c2_cola2_out.csv",std::ios::app);
+                    myfile << e_char;
+                    myfile <<"\n";
+                    myfile.close();
 	            	tiempo2 = 0;	
                     std::stringstream v1;
                     v1 << destino2 ;
@@ -266,6 +297,14 @@ if((e1.compare("Libre") == 0) && (x.port == 0) && (optimo(*aux,e) == 1)){
         tiempo1 = tiempo1 -e;
         if (!find(cola1,*aux)){
 		    cola1.push_back(*aux);
+            //manage c2_out.csv
+            std::stringstream e_string;
+            e_string<< t;
+            char const *e_char = e_string.str().c_str();
+            myfile.open ("c2_cola1_in.csv",std::ios::app);
+            myfile << e_char;
+            myfile <<"\n";
+            myfile.close();
             counter_aux++;
             demora1 =  demora1-e+ (abs(*aux-ult_dest1)*2);
             ult_dest1 = *aux;
@@ -294,6 +333,14 @@ if((e1.compare("Libre") == 0) && (x.port == 0) && (optimo(*aux,e) == 1)){
                 printLog("ifffffff1");
                 if (!find(cola2,*aux)){            	
                     cola2.push_back(*aux);
+                    //manage c2_in.csv
+                    std::stringstream e_string;
+                    e_string<< t;
+                    char const *e_char = e_string.str().c_str();
+                    myfile.open ("c2_cola2_in.csv",std::ios::app);
+                    myfile << e_char;
+                    myfile <<"\n";
+                    myfile.close();
                     counter_aux++;
 					demora2 = demora2-e+ (abs(*aux-ult_dest2)*2);
                     ult_dest2 = *aux;	

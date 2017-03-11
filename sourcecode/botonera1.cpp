@@ -10,12 +10,23 @@ va_start(parameters,t);
 estado = "Libre";
 //pet = new std::queue<double>();
 tiempo = INF;
+
+//clear the files
+myfile.open ("botonera_in.csv");
+myfile << "";
+myfile.close();
+myfile.open ("botonera_out.csv");
+myfile << "";
+myfile.close();
 }
 double botonera1::ta(double t) {
 //This function returns a double.
 return tiempo;
 }
 void botonera1::dint(double t) {
+std::stringstream e_string;
+e_string<< t;
+char const *e_char = e_string.str().c_str();
 printLog("\n BOTONERA delta int\n ");
 if ((estado.compare("Libre")==0) ){
 	std::stringstream v1;
@@ -24,6 +35,10 @@ if ((estado.compare("Libre")==0) ){
 	printLog(" \n Queue size before of delete of an element: ");
 	printLog(pchar);
 	printLog(" \n");
+    myfile.open ("botonera_out.csv",std::ios::app);
+    myfile << e_char;
+    myfile <<"\n";
+    myfile.close();
 	pet.pop(); //ver
 	tiempo = INF;
 	std::stringstream v2;
@@ -48,6 +63,9 @@ aux = (double*) x.value;
 std::string *aux2;
 aux2 = static_cast<std::string*>(x.value);
 
+std::stringstream e_string;
+e_string<< t;
+char const *e_char = e_string.str().c_str();
 printLog("\nEstado BOT: ");
 printLog(estado.c_str());
 printLog("\n");
@@ -59,11 +77,19 @@ if ((x.port == 0) && (estado.compare("Libre")==0)){
 	printLog(pchar);
 	printLog(" \n");
     if (pet.size()<=0){
+        myfile.open ("botonera_in.csv",std::ios::app);
+        myfile << e_char;
+        myfile <<"\n";
+        myfile.close();
         pet.push(*aux);
 	    tiempo = 0.0;
     }else{
         const long &result = pet.back();
         if (result!=*aux){
+          myfile.open ("botonera_in.csv",std::ios::app);
+          myfile << e_char;
+          myfile << "\n";
+          myfile.close();
           pet.push(*aux);
 	      tiempo = 0.0;  
 	    }else{
@@ -84,6 +110,10 @@ if ((x.port == 0) && (estado.compare("Libre")==0)){
 		printLog(" \n Queue size before of insert of an element: ");
 		printLog(pchar);
 		printLog(" \n");
+        myfile.open ("botonera_in.csv",std::ios::app);
+        myfile << e_char;
+        myfile << "\n";
+        myfile.close();
 		pet.push(*aux);
 		tiempo = INF;
 		std::stringstream v2;
