@@ -22,9 +22,7 @@ Coupled
             {
             Name = Controlador
             Ports = 3 ; 3
-
-            Path = sourcecode/c21.h
-
+            Path = sourcecode/controlador2.h
             Description = Atomic DEVS model
             Graphic
                 {

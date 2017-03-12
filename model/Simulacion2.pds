@@ -2,7 +2,7 @@ Root-Coordinator
  {
   Simulator
    {
-    Path = sourcecode/c21.h
+    Path = sourcecode/controlador2.h
     Parameters = 
    }
   Simulator
